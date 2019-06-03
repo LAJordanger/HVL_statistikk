@@ -4,8 +4,8 @@
 \alias{test_shiny}
 \title{Shiny app to be used for some simple investigations.}
 \usage{
-test_shiny(distribution = list(type = "normal", mean = -2:2, sd = c(0.1, 0.25,
-  0.5, 1, 2, 4, 8)), n_max = 250, R_max = 1000, seed = NULL)
+test_shiny(distribution = list(type = "normal", mean = -2:2, sd = c(0.1,
+  0.25, 0.5, 1, 2, 4, 8)), n_max = 250, R_max = 1000, seed = NULL)
 }
 \arguments{
 \item{distribution}{A list that gives details related to the

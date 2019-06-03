@@ -1,13 +1,25 @@
 Package: HVLstatistikk
-Title: HVL - simple shiny applications for teaching. 
+Title: HVL - simple shiny applications for teaching.
 Version: 0.0.0.9000
 Authors@R: person("Lars Arne", "Jordanger", email = "laj@hvl.no", role = c("aut", "cre"))
 Description: A package with a few simple shiny interactions, created for the purpose of teaching statistics at Western Norway University of Applied Sciences.
 Depends: R (>= 3.1.0)
 License: GPL-3
-Imports:
+Imports: 
+    ggplot2,
+    leanRcoding,
+    markdown,
+    mvtnorm,
+    methods,
+    plyr,
+    pryr,
     shiny,
-    ggplot2
+    shinyjs,
+    stats,
+    stringr,
+    timeDate,
+    tseries,
+    utils
 Suggests:
     knitr,
     rmarkdown,
@@ -15,4 +27,4 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
