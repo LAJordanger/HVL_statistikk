@@ -2,6 +2,7 @@
 
 export(HVL_sample)
 export(HVL_shiny)
+export(LLN_plot)
 export(test_shiny)
 export(the_plot)
 import(shiny)
