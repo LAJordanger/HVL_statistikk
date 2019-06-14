@@ -56,58 +56,28 @@ xy_formatC <- function(x,
                    no   = 0)
     .result <- formatC(x = .x, digits = digits, format = "f")
     ##  If this is to be used inside a plot, then it might be
-    ##  necessary to replace each trailing zero with "*0". This can be
-    ##  done by comparing the result when trailing zeros are ignored.
-    ##  A decimal sign will also be added when required.
+    ##  necessary to replace a zero "0" with "*0" in order to avoid
+    ##  missing trailing zero with "*0". This can be done by help of
+    ##  some splitting, substitution and pasting.  An updated decimal
+    ##  sign will also be added when required.
     if (.plotmath) {
-        .temp_plot <- as.character(x = round(.x, digits = digits))
-        ##  Add decimal sign when required, taking into account the
-        ##  desired sign to use.
-        .need_decimal_sign <- all(
-            round(x, digits = digits) == round(x, digits = 0),
-            digits > 0)
-        .tz <- nchar(.result) - nchar(.temp_plot) -
-            as.integer(.need_decimal_sign)
-        ##  Adjust or add decimal-sign
-        if (.tz < digits) {
-            .temp_plot <- gsub(
-                x = .temp_plot,
-                pattern = "\\.",
-                replacement = sprintf(
-                    "*'%s'*",
-                    .decimal))
-        } else {
-            if (digits > 0)
-                .temp_plot <- sprintf(
-                    "%s*'%s'",
-                    .temp_plot,
-                    .decimal)
-        }
-        ##  Update '.result'
-        .result <- paste(
-            c(.temp_plot,
-              rep(x="0", times = .tz)),
-            collapse = "*")
-        ##  When required, do a replacement of the decimal-sign.
-        if (.decimal!=".") {
-            .result <- gsub(
-                x = .result,
-                pattern = "\\.",
-                replacement = sprintf("*'%s'%s",
-                                      .decimal,
-                                      ifelse(
-                                          test = {.tz < digits},
-                                          yes  = "*",
-                                          no   = "")))
-        }
-    } else {
-        ##  When required, do a replacement of the decimal-sign.
-        if (.decimal!=".") {
-            .result <- gsub(
-                x = .result,
-                pattern = "\\.",
-                replacement = .decimal)
-        }
+        ##  Split '.result' in into individual characters.
+        .tmp <- strsplit(x = .result,
+                         split = "")[[1]]
+        ##  Add "'" everywhere.
+        .tmp <- gsub(pattern = "",
+                     replace = "'",
+                     x = .tmp)
+        ## Paste it together again.
+        .result <- paste(.tmp,
+                         collapse  = "*")
+    }
+    ##  When required, do a replacement of the decimal-sign.
+    if (.decimal!=".") {
+        .result <- gsub(
+            x = .result,
+            pattern = "\\.",
+            replacement = ",")
     }
     ##  Add an attribute to '.result', to show if its value is equal
     ##  to the original 'x', so other functions can select the correct
