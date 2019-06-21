@@ -5,7 +5,7 @@
 \title{Add information about critical values to a plot.}
 \usage{
 add_label_to_plot(.plot, x, y, add_tick = FALSE, label, parse = TRUE,
-  vjust = 2, size = 5)
+  vjust = 2, size = 5, colour = "black")
 }
 \arguments{
 \item{.plot}{The plot upon which the information should be added.}
@@ -27,15 +27,15 @@ given by \code{x} and \code{y}.}
 \item{parse}{Logical value, default value \code{TRUE}, which
 decides if the text given in \code{label} should be parsed.}
 
-\item{size}{The value that governs the size of the text, default
-value \code{5}.}
-
-\item{hjust}{A number (default value \code{2}) that governs the
+\item{vjust}{A number (default value \code{2}) that governs the
 vertical adjustment of \code{label} relative the value
 \code{y}. Note that this argument is relative to the
 \code{size}-value, and an increase in \code{size} might thus
 require a decrease in \code{vjust} in order to get the desired
 position.}
+
+\item{size}{The value that governs the size of the text, default
+value \code{5}.}
 
 \item{colour}{The colour, default value \code{"black"}, that will
 be used for the added details.}

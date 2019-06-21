@@ -22,7 +22,7 @@
 #' @param parse Logical value, default value \code{TRUE}, which
 #'     decides if the text given in \code{label} should be parsed.
 #'
-#' @param hjust A number (default value \code{2}) that governs the
+#' @param vjust A number (default value \code{2}) that governs the
 #'     vertical adjustment of \code{label} relative the value
 #'     \code{y}. Note that this argument is relative to the
 #'     \code{size}-value, and an increase in \code{size} might thus
@@ -41,7 +41,8 @@
 #' @keywords internal
 
 add_label_to_plot <- function(.plot, x, y, add_tick = FALSE, label,
-                              parse = TRUE, vjust = 2, size = 5) {
+                              parse = TRUE, vjust = 2, size = 5,
+                              colour = "black") {
     ##  Return an updated plot.
     .plot +
         annotate(
